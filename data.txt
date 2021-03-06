@@ -1,0 +1,6 @@
+Missle Count: 5
+Airplanes: 3
+Business: 7
+Tanks: 3
+Professors: 9
+Networks: 4
