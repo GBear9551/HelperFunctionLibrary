@@ -457,71 +457,106 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
 
 
     // Declare and Initialize variables
+      int positiveIntegerCounter = 0;
+      int isDigit = 0;
+      char charFromFile = 'h';
+      bool previousDigit = false;
+      bool positive = false;
+      bool negative = false;
 
     // open file
+      fin.open(fileName);
+
+    // Prime Loop
+
+      // previousDigit = false
+      
+      // postive = false
+
+      // negative = false
+
+      // isDigit = false
+
+      // TODO: summation = 0, integer array position = 0, exponent = 1, multipler = 10, currentdigit = 0
 
     // loop through file finding all the positiveIntegers
+      while (fin.good())
+      {
+          // get a character
+            fin.get(charFromFile);
 
-      // get a character
+          // is the character a digit? store result 
+            isDigit = isdigit(charFromFile) ;
 
-      // is the character a digit? store result 
+             // case 1. the character is not a digit and no digit was detected before this one, is the character a negative character?
+               // if the negative character was detected then set the negative flag to true.
+            if ((isDigit == 0) && (previousDigit == false) && (charFromFile == '-'))
+            {
 
+               // this character could also terminate an integer sequence, therefore we must do clean up.
 
-         // case 1. the character is not a digit and no digit was detected before this one, move on, do nothing
+               // set negative flag
+                negative = true;
 
-         // case 2. the character is not a digit and there was a digit detected before this one, reset flags, increment, and store.
-                    // complete the integer, it could be true that we are completeing a negative int or positive int
-                      
-              // Was the negative flag set?
-
-                // then set the negative flag back to false
-
-                // set the continued digit flag to false
-
-
-              // Was the positive flag set?
-
-                // set the continued digit flag to false
-
-                // increment the positive integer counter
-
-                // //TODO: increase the multipler by ten multiplier = pow(currentMultipler,10), then sum = sum + digit*multipler.
-
-         // case 2. the character is not a digit but is a negative, we set the negative flag, and eat until no digit is detected
-
-         // case 3. the character is a digit and no digit was detected before this one(continuedDigit was false)
-                  // we have a digit and have to continue to getdigits, check the negative set flag.
-
-                // set continuedDigit to true
-
-                // TODO: add the digit to the int arr, however do this when the continuedDigit flag is false.
-                  // TODO math: sum is zero, then add the digit, we track the position of the digit, such that we use
-                    // scientific notation to add the new digit.
+            }
 
 
-         // case 4. the character is a digit and there was a digit before this one, we continue getting digits
-           // for each continued digit we increase our exponent one, we multiply this to the current sum
-             // then we add the new digit to the current sum. ONLY IF THE POSITIVE FLAG IS SET
+             // case 2. the character is not a digit and there was a digit detected before this one, this means the
+               // function is no longer detecting an integer within the file, therefore we reset flags, 
+                 // increment the result, and store the results.
+                        // complete the integer, it could be true that we are completing a negative int or positive int
+            if ((isDigit == 0) && (previousDigit == true))
+            {
+                // Was the negative flag set?
+                if (negative == true)
+                {
+
+                    // then set the negative flag back to false
+
+                    // set the continued digit flag to false
+                      previousDigit = false;
+                }
+                
+                else // else the positive flag was set
+                {
+
+                    // set the continued digit flag to false
+                      previousDigit = false;
+
+                    // increment the positive integer counter
+                      positiveIntegerCounter++;
+
+                    // //TODO: increase the multipler by ten multiplier = pow(currentMultipler,10), then sum = sum + digit*multipler.
+                }
+            }
+             // case 2. the character is not a digit but is a negative, we set the negative flag, and eat until no digit is detected
+
+             // case 3. the character is a digit and no digit was detected before this one(continuedDigit was false)
+                      // we have a digit and have to continue to getdigits, check the negative set flag.
+             
+                    // set continuedDigit to true
+
+                    // assign previousDigit = true
+
+                    // TODO: add the digit to the int arr, however do this when the continuedDigit flag is false.
+                      // TODO math: sum is zero, then add the digit, we track the position of the digit, such that we use
+                        // scientific notation to add the new digit.
 
 
-         // if yes then we are keeping track of a positive integer, unless there was a negative infront.
-           // a negative flag does to false only we are done eating the current negative integer.
-
-         // cases 
-
-         // else we are no longer tracking an integer
+             // case 4. the character is a digit and there was a digit before this one, we continue getting digits
+               // for each continued digit we increase our exponent one, we multiply this to the current sum
+                 // then we add the new digit to the current sum. ONLY IF THE POSITIVE FLAG IS SET
 
 
+             // if yes then we are keeping track of a positive integer, unless there was a negative infront.
+               // a negative flag does to false only we are done eating the current negative integer.
 
+             // cases 
 
-
-
-    // close file
-
-
-
-    return 0;
-
+             // else we are no longer tracking an integer
+      }
+      // close file stream
+        fin.close();
 
     return 0;
 }
