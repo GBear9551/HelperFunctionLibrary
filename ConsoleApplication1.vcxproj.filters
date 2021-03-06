@@ -44,6 +44,9 @@
     <Text Include="mixtureOfNumbers.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="integerTest01.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myStrHelper.h">

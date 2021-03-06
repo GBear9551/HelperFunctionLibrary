@@ -22,7 +22,13 @@ const int MAX_CHAR_ARR_SIZE = 10000;
 
 const char CONST_NULL_CHAR = '\0';
 const char CONST_ENDLINE = '\n';
+const char CONST_SPACE = ' ';
+const char CONST_NEGATIVE_CHAR = '-';
 const int MAX_CSTRING_SIZE= 255;
+
+// Prints an iostream dialouge about the character, such that the character is either a digit or not, and prints the character. 
+  // Useful for file stream debugging.
+void debugCharacter(char character);
 
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize);
 

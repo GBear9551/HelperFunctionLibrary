@@ -144,6 +144,7 @@
     <ClCompile Include="HelperFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="integerTest01.txt" />
     <Text Include="mixtureOfNumbers.txt" />
     <Text Include="negativeIntegers.txt" />
     <Text Include="positiveAndNegativeIntegers.txt" />

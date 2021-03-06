@@ -43,6 +43,7 @@ int main()
     int resultSize = MAX_CSTRING_SIZE;
     int numOfWordsInFile = 0;
     int numOfCharactersInFile = 0;
+    int resultNum = 0;
     char pause = 'a';
     char charToDetect = '\n';
     bool mainLoopValid = true;
@@ -146,6 +147,13 @@ int main()
 
         case 7:
             // function: count number of integers in a file
+              cout << '\n' << "Please enter a file name: ";
+              cin >> fileName;
+              cout <<'\n' << "File name entered: " << fileName;
+              resultNum = numOfPositiveIntegersInFile(fin, fileName);
+              cout << '\n' << " The number of Positive Integers detected in file, " << fileName << " was: " <<  resultNum; 
+              pauseScreen();
+
             break;
 
         case 8:

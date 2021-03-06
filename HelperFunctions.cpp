@@ -9,7 +9,12 @@
 
 #include "HelperFunctions.h"
 
-
+void debugCharacter(char character)
+{
+    cout << "Character from file: " << character; // Create Debug functions
+    cout << "\n" << "Character digit truth: " << isdigit(character);
+    pauseScreen();
+}
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize)
 {
   // Declare and Initialize Variables
@@ -347,6 +352,108 @@ int countNumOfCharacter(ifstream& fin, char fileName[], const char& characterToB
 
 }
 
+
+int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
+{
+    // Declare and Initialize variables
+      char getCharacter = 'i';
+      bool spaceDetected = false;
+      bool continuedDigit = false;
+      int numOfPositiveIntegersDetected = 0;
+      int numOfErrors = 0;
+    // Assume file parameters  
+      /*
+        1 2 -2
+        301 42 1
+        13 15 -4009
+      */
+    // open file
+      fin.open(fileName);
+
+    // Prime loop, spaceDetected must be false, so that the function does not return a result that is one off.
+      spaceDetected = false;
+      continuedDigit = true;
+
+    // loop through file while the file is good
+      while (fin.good())
+      {
+          //  update condition: check each character
+            fin.get(getCharacter);
+
+// DEBUG:
+           /* cout << "Character from file: " << getCharacter; // Create Debug functions
+            cout << "\n" << "Character digit truth: " << (isdigit(getCharacter) !=0 );
+           // pauseScreen();
+           */
+
+          // if a space is detected then allow us to continue detecting positive and negative integers. the flag preventing a digit detection.
+            if (getCharacter == CONST_SPACE)
+            {
+                spaceDetected = false;
+                continuedDigit = false;
+                numOfPositiveIntegersDetected++;
+            }
+          // if character is "-" or negative, then skip until a space is detected
+            else if ((getCharacter == CONST_NEGATIVE_CHAR) ||  (getCharacter == CONST_ENDLINE))
+                spaceDetected = false;
+
+          // As long as a space is not detected then we know the character is something other ' ' 
+             // therefore the character could potentially lead us the detection of a positive integer.
+              
+          // if character is a digit, then only count the postive integer when the space detected flag goes true. 
+            // Function: isdigit, returns an integer: Complete Function prototype: int isdigit(int c); 
+            else if ((isdigit(getCharacter) != 0) && (spaceDetected == false) && (continuedDigit == true))
+            {
+                spaceDetected = false;
+                continuedDigit = true;
+            }
+            else if((isdigit(getCharacter) != 0) && (spaceDetected == false) && (continuedDigit == false))
+            {
+
+                continuedDigit = true;
+            }
+            else
+            {
+                /*cout << '\n' << "Error: The character was not a space, was not '-', was not an endline char";
+                cout << '\n' << " and was not a digit, therefore this character might be a decimal point or ";
+                cout << '\n' << " a character to be used for an expanded verision of this function."; 
+                cout << '\n' << " Number of errors detected: " << numOfErrors;*/
+                numOfErrors++;
+                
+            }
+            
+      }
+
+          // Now that the file stream has stopped we need to check to see
+            // if the final character was still apart of the last integer.
+      if ((isdigit(getCharacter) != 0) && (spaceDetected == false) && (continuedDigit == true))
+          numOfPositiveIntegersDetected++;
+
+    // function stub
+    return numOfPositiveIntegersDetected;
+}
+
+int numOfNegativeIntegersInFile(ifstream& fin, char fileName[])
+{
+
+    return 0;
+}
+
+int numOfIntegersInFile(ifstream& fin, char fileName[])
+{
+
+    return 0;
+}
+
+int numOfDigitsInFile(ifstream& fin, char fileName[])
+{
+    return 0;
+}
+
+int countNumOfVectorsInFile(ifstream& fin, char fileName[])
+{
+    return 0;
+}
 
 
 
