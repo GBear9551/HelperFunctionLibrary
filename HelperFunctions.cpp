@@ -352,7 +352,7 @@ int countNumOfCharacter(ifstream& fin, char fileName[], const char& characterToB
 
 }
 
-
+/*
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
 {
     // Declare and Initialize variables
@@ -368,14 +368,14 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
         13 15 -4009
       */
     // open file
-      fin.open(fileName);
+ //     fin.open(fileName);
 
     // Prime loop, spaceDetected must be false, so that the function does not return a result that is one off.
-      spaceDetected = false;
-      continuedDigit = true;
+ //     spaceDetected = false;
+  //    continuedDigit = true;
 
     // loop through file while the file is good
-      while (fin.good())
+   /*   while (fin.good())
       {
           //  update condition: check each character
             fin.get(getCharacter);
@@ -385,7 +385,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
             cout << "\n" << "Character digit truth: " << (isdigit(getCharacter) !=0 );
            // pauseScreen();
            */
-
+/*
           // if a space is detected then allow us to continue detecting positive and negative integers. the flag preventing a digit detection.
             if (getCharacter == CONST_SPACE)
             {
@@ -417,7 +417,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
                 /*cout << '\n' << "Error: The character was not a space, was not '-', was not an endline char";
                 cout << '\n' << " and was not a digit, therefore this character might be a decimal point or ";
                 cout << '\n' << " a character to be used for an expanded verision of this function."; 
-                cout << '\n' << " Number of errors detected: " << numOfErrors;*/
+                cout << '\n' << " Number of errors detected: " << numOfErrors;
                 numOfErrors++;
                 
             }
@@ -432,6 +432,167 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
     // function stub
     return numOfPositiveIntegersDetected;
 }
+*/
+
+int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
+{
+ /* Assumption file format
+    
+
+     1 2 -3
+     -13 -15 16
+     17 18 19
+
+
+     --------------
+      -1 2 3 34
+      a1bb-789x
+      3401 23 41
+      ..........
+      43 24
+    
+    
+    
+    */
+
+
+    // Declare and Initialize variables
+
+    // open file
+
+    // loop through file finding all the positiveIntegers
+
+      // get a character
+
+      // is the character a digit? store result 
+
+
+         // case 1. the character is not a digit and no digit was detected before this one, move on, do nothing
+
+         // case 2. the character is not a digit and there was a digit detected before this one, reset flags, increment, and store.
+                    // complete the integer, it could be true that we are completeing a negative int or positive int
+                      
+              // Was the negative flag set?
+
+                // then set the negative flag back to false
+
+                // set the continued digit flag to false
+
+
+              // Was the positive flag set?
+
+                // set the continued digit flag to false
+
+                // increment the positive integer counter
+
+                // //TODO: increase the multipler by ten multiplier = pow(currentMultipler,10), then sum = sum + digit*multipler.
+
+         // case 2. the character is not a digit but is a negative, we set the negative flag, and eat until no digit is detected
+
+         // case 3. the character is a digit and no digit was detected before this one(continuedDigit was false)
+                  // we have a digit and have to continue to getdigits, check the negative set flag.
+
+                // set continuedDigit to true
+
+                // TODO: add the digit to the int arr, however do this when the continuedDigit flag is false.
+                  // TODO math: sum is zero, then add the digit, we track the position of the digit, such that we use
+                    // scientific notation to add the new digit.
+
+
+         // case 4. the character is a digit and there was a digit before this one, we continue getting digits
+           // for each continued digit we increase our exponent one, we multiply this to the current sum
+             // then we add the new digit to the current sum. ONLY IF THE POSITIVE FLAG IS SET
+
+
+         // if yes then we are keeping track of a positive integer, unless there was a negative infront.
+           // a negative flag does to false only we are done eating the current negative integer.
+
+         // cases 
+
+         // else we are no longer tracking an integer
+
+
+
+
+
+
+    // close file
+
+
+
+    return 0;
+
+
+    return 0;
+}
+int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[], const int& arrSize)
+{
+
+    /* Assumption file format
+    
+
+     1 2 -3
+     -13 -15 16
+     17 18 19
+
+
+     --------------
+      -1 2 3 34
+      a1bb-789x
+      3401 23 41
+      ..........
+      43 24
+    
+    
+    
+    */
+
+
+    // Declare and Initialize variables
+
+    // open file
+
+    // loop through file finding all the positiveIntegers
+
+      // get a character
+
+      // is the character a digit? 
+
+
+         // case 1. the character is not a digit and no digit was detected before this one, move on, do nothing
+
+         // case 2. the character is not a digit and there was a digit detected before this one, reset flags, increment, and store.
+
+         // case 2. the character is not a digit but is a negative, we set the negative flag, and eat until no digit is detected
+
+         // case 2. the character is a digit and no digit was detected before this one, we have a digit and have to continue to getdigits
+
+         // case 3. the character is a digit and there was a digit before this one, we continue getting digits
+           // for each continued digit we increase our multipler (10 in this case) by one, we multiply this to the current sum
+             // then we add the new digit to the current sum.
+
+
+         // if yes then we are keeping track of a positive integer, unless there was a negative infront.
+           // a negative flag does to false only we are done eating the current negative integer.
+
+         // cases 
+
+         // else we are no longer tracking an integer
+
+
+
+
+
+
+    // close file
+
+
+
+    return 0;
+}
+
+
+
 
 int numOfNegativeIntegersInFile(ifstream& fin, char fileName[])
 {

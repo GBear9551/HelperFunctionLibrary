@@ -19,7 +19,7 @@ const int MAX_INTEGER_ARR_SIZE = 10000;
 const int MAX_FLOAT_ARR_SIZE = 10000;
 const int MAX_DOUBLE_ARR_SIZE = 10000;
 const int MAX_CHAR_ARR_SIZE = 10000;
-
+const int MAX_NUM_COLS = 100000; 
 const char CONST_NULL_CHAR = '\0';
 const char CONST_ENDLINE = '\n';
 const char CONST_SPACE = ' ';
@@ -81,6 +81,11 @@ process:
 dependancies:
 */
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[]);
+
+int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[], const int& arrSize);
+
+
+int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[][MAX_NUM_COLS]);
 
 int numOfNegativeIntegersInFile(ifstream& fin, char fileName[]);
 
