@@ -25,11 +25,11 @@ class Fraction
 
    public:
        Fraction(); // Default Constructor
-       Fraction(); // Parameterized Constructor
-       // Copy Constructor used when passing the object into a function.
-       // Destructor
-       // Assignment Operator
-       // Addition Operator
+       Fraction(int numerator, int denominator) { m_numerator = m_dividend = numerator; m_denominator = m_divisor = denominator; m_remainder = numerator % denominator; } // Parameterized Constructor
+       Fraction(const Fraction& fraction);// Copy Constructor used when passing the object into a function.
+       ~Fraction();// Destructor
+       Fraction& operator=(const Fraction& rhsObject);// Assignment Operator
+       Fraction operator+(const Fraction& rhsObject);// Addition Operator
        // Subtraction Operator
        // Multiplication Operator
        // Division Operator

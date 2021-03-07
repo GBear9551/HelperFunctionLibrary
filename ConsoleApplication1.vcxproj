@@ -145,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="integerTest01.txt" />
+    <Text Include="integerTest02.txt" />
+    <Text Include="integerTest03.txt" />
+    <Text Include="integerTest04.txt" />
     <Text Include="mixtureOfNumbers.txt" />
     <Text Include="negativeIntegers.txt" />
     <Text Include="positiveAndNegativeIntegers.txt" />
