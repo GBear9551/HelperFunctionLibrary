@@ -15,6 +15,9 @@ void debugCharacter(char character)
     cout << "\n" << "Character digit truth: " << isdigit(character);
     pauseScreen();
 }
+
+
+
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize)
 {
   // Declare and Initialize Variables
@@ -177,8 +180,11 @@ void strCopy(const char src[], char dest[], const int& sizeOne, const int& sizeT
       {
 
          // Iterate through the source string and place each character in the dest string
-          for (index = 0; index < sizeTwo; index++)
+          for (index = 0; index < sizeOne; index++)
               dest[index] = src[index];
+
+          
+          dest[index] = '\0';
       }
 
 }
@@ -252,7 +258,75 @@ void strConcate(const char stringOne[], const char stringTwo[], char result[], c
 
 }
 
+void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& numOfFiles)
+{
+    // Declare and Initialize variables
+      int index = 0;
+      int len = 0;
+      char fileName[255];
+      char orgFileName[255];
+      
+    // Request file to open
+      cout << '\n' << "Please enter the name of the test file collection: ";
+      cin >> fileName;
 
+      len = strLen(fileName);
+      strCopy(fileName, orgFileName, len, 255);
+
+    // open file
+      fin.open(fileName);
+
+    // loop through file 
+      while (fin.good())
+      {
+          // file insert each name into the 2-D character array
+          fin.getline( fileName, MAX_CHAR_ARR_SIZE);
+
+          cout << '\n' << "File name: " << fileName;
+          len = strLen(fileName);
+          strCopy(fileName, fileNames[index], len, MAX_CHAR_ARR_SIZE);
+          cout << '\n' << "FileNames[" << index << "] : " << fileNames[index];
+          index++;
+          pauseScreen();
+      }
+
+      // return the number of files by reference
+        numOfFiles = index ;
+
+        cout << '\n' << "Number of Files received from " << orgFileName << ": " << numOfFiles;
+        pauseScreen();
+
+      // file close
+        fin.close();
+
+
+
+}
+
+void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_NUM_FILES])
+{
+   // Declare and Initialize variables
+    int rowIndex = 0;
+    char testFiles[255];
+
+   // get file name
+    cout << '\n' << "Enter the file name containing the list of test files: ";
+    cin >> testFiles;
+
+   // open file
+    fin.open(testFiles);
+    fin.close();
+   // Iterate through the file until thi
+
+   // read file into 2-d array
+    
+   // close fout stream
+
+   // test each function on the test files
+
+   // 
+
+}
 
 void clearScreen()
 {

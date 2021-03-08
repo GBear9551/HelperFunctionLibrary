@@ -15,20 +15,40 @@
 using namespace std;
 
 // Global Constants
-const int MAX_INTEGER_ARR_SIZE = 10000;
-const int MAX_FLOAT_ARR_SIZE = 10000;
-const int MAX_DOUBLE_ARR_SIZE = 10000;
-const int MAX_CHAR_ARR_SIZE = 10000;
-const int MAX_NUM_COLS = 100000; 
+const int MAX_INTEGER_ARR_SIZE = 1000;
+const int MAX_FLOAT_ARR_SIZE = 1000;
+const int MAX_DOUBLE_ARR_SIZE = 1000;
+const int MAX_CHAR_ARR_SIZE = 1000;
+const int MAX_NUM_COLS = 10000; 
 const char CONST_NULL_CHAR = '\0';
 const char CONST_ENDLINE = '\n';
 const char CONST_SPACE = ' ';
 const char CONST_NEGATIVE_CHAR = '-';
 const int MAX_CSTRING_SIZE= 255;
+const char MAX_NUM_FILES = 100;
+
 
 // Prints an iostream dialouge about the character, such that the character is either a digit or not, and prints the character. 
   // Useful for file stream debugging.
 void debugCharacter(char character);
+
+/*
+name: run tests on a group of files
+input: a filename listing the  files to be tested.
+  Assumed Format:
+     test01.txt
+     test02.txt
+     test03.txt
+output: prints the results for each file, print: FileName, Results: 
+           and returns a 2D-character array with the name of each test file.
+process: iterate through the 2-D cstyle array file each entry from file output stream. Then run the test functions on 
+           each file.
+dependancies: iostream fstream
+*/
+void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE]);
+
+void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& numOfFiles);
+
 
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize);
 
@@ -83,7 +103,6 @@ dependancies:
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[]);
 
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[], const int& arrSize);
-
 
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[][MAX_NUM_COLS]);
 

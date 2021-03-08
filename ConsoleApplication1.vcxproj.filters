@@ -50,6 +50,9 @@
     <Text Include="integerTest02.txt" />
     <Text Include="integerTest03.txt" />
     <Text Include="integerTest04.txt" />
+    <Text Include="listOfTestFiles.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myStrHelper.h">

@@ -44,10 +44,12 @@ int main()
     int numOfWordsInFile = 0;
     int numOfCharactersInFile = 0;
     int resultNum = 0;
+    int numOfFiles = 0;
     char pause = 'a';
     char charToDetect = '\n';
     bool mainLoopValid = true;
     bool isEqual = false;
+    char* testName = new char[255];
     char fileName[MAX_CSTRING_SIZE];
     char lengthTestString[] = "Test Length";
     char copyStringOne[] = " Copy Test String One";
@@ -58,12 +60,15 @@ int main()
     char concateTestStringOne[] = " con";
     char concateTestStringTwo[] = "cate";
     char resultString[MAX_CSTRING_SIZE];
+    char fileNames[MAX_NUM_FILES][MAX_CHAR_ARR_SIZE];
+
 
     ifstream fin; 
 
+    // Input several files
    
     //char concateTestResultString[MAX_CSTRING_SIZE];
-    
+    cin >> testName;
 
     // Main loop
       while(mainLoopValid)
@@ -169,6 +174,13 @@ int main()
             break;
 
         case 11:
+            // Test the integer parser with every function on every test file. Expect Mean E(X), after 
+             // After x many tests, it is likely that a certain number of integers will exist in the next file.
+              // function: testIntegerParser
+            storeTestFiles(fin, fileNames, numOfFiles);
+            break;
+
+        case 12:
             mainLoopValid = false;
             break;
 
@@ -207,7 +219,8 @@ void displayMenu()
     cout << " 8. Count the number of negative integers in a file " << '\n';
     cout << " 9. Count the number of floats/doubles in a file " << '\n';
     cout << " 10. Count number of numbers in a file floats included" << '\n';
-    cout << " 11. Exit program." << '\n';
+    cout << " 11. Test Program" << '\n';
+    cout << " 12. Exit Program" << '\n';
     cout << " User Input: ";
 
 
