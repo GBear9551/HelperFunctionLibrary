@@ -287,14 +287,12 @@ void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& num
           strCopy(fileName, fileNames[index], len, MAX_CHAR_ARR_SIZE);
           cout << '\n' << "FileNames[" << index << "] : " << fileNames[index];
           index++;
-          pauseScreen();
       }
 
       // return the number of files by reference
         numOfFiles = index ;
 
         cout << '\n' << "Number of Files received from " << orgFileName << ": " << numOfFiles;
-        pauseScreen();
 
       // file close
         fin.close();
@@ -303,28 +301,32 @@ void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& num
 
 }
 
-void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_NUM_FILES])
+void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
 {
    // Declare and Initialize variables
+    int index = 0;
     int rowIndex = 0;
-    char testFiles[255];
+    int testResult = 0;
+    int numberOfTestFiles = 0;
 
-   // get file name
-    cout << '\n' << "Enter the file name containing the list of test files: ";
-    cin >> testFiles;
+   // get files and store them into a 2-D character array
+    storeTestFiles(fin, fileNames, numberOfTestFiles);
 
-   // open file
-    fin.open(testFiles);
-    fin.close();
-   // Iterate through the file until thi
+   // iterate through each test file and run the functions on the files
+    for (index = 0; index < numberOfTestFiles; index++)
+    {
 
-   // read file into 2-d array
-    
-   // close fout stream
 
-   // test each function on the test files
+       // run test function on file
+        testResult = numOfPositiveIntegersInFile(fin, fileNames[index]);
+          
+       // print test result
+        cout << '\n';
+        cout << "Function: Number Of Postive Integers operated on file: " << fileNames[index] << " the following result was provided: " << testResult;
+         
 
-   // 
+    }
+
 
 }
 

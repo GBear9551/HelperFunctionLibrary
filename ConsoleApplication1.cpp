@@ -68,7 +68,6 @@ int main()
     // Input several files
    
     //char concateTestResultString[MAX_CSTRING_SIZE];
-    cin >> testName;
 
     // Main loop
       while(mainLoopValid)
@@ -176,8 +175,9 @@ int main()
         case 11:
             // Test the integer parser with every function on every test file. Expect Mean E(X), after 
              // After x many tests, it is likely that a certain number of integers will exist in the next file.
-              // function: testIntegerParser
-            storeTestFiles(fin, fileNames, numOfFiles);
+              // function: testIntegerParser 
+            runTestsOnFiles(fin, fileNames);
+            pauseScreen();
             break;
 
         case 12:

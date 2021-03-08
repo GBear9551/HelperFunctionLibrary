@@ -49,6 +49,9 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE]);
 
 void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& numOfFiles);
 
+void generateARandomTestFile(ofstream& fout, char fileName[]);
+
+void generateAGroupOfTestFiles(ofstream& fout, char fileName[]);
 
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize);
 
