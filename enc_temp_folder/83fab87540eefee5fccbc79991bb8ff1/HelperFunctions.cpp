@@ -372,8 +372,6 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
 
     }
 
-    fin.close();
-
 
 }
 
@@ -427,8 +425,6 @@ int countNumOfEnglishCharacters(ifstream& fin, const char fileName[])
 
       }
 
-      fin.close();
-
       return numOfCharactersInFile;
 
 }
@@ -453,10 +449,7 @@ int countNumOfCharacters(ifstream& fin, const char fileName[])
           // count the character
           ++numOfCharacters;
       }
-   
-      //
-      fin.close();
-
+    
       // return the number of characters in the file
         return numOfCharacters;
 }
