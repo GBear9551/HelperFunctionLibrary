@@ -290,6 +290,15 @@ void strConcate(const char stringOne[], const char stringTwo[], char result[], c
 
 }
 
+
+/*
+
+Test analysis: Uniform Distribution
+ It is the maximum entropy probability distribution
+ for a random variable X under no constraint other than that it is contained in the distribution's supporto
+
+*/
+
 void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& numOfFiles)
 {
     // Declare and Initialize variables
@@ -414,7 +423,9 @@ int countNumOfEnglishCharacters(ifstream& fin, const char fileName[])
       while (fin.good())
       {
           // get a character from the file
-          fin.get();
+          fin.get(characterFromFile);
+
+          cout << '\n' << "Character from file: " << characterFromFile;
 
           // is the character a valid character?
           if (isdigit(characterFromFile) == 0)

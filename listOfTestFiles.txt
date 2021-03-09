@@ -1,5 +1,5 @@
 emptyFile.txt
-noIntegerTest00.txt
+integerTest00.txt
 integerTest01.txt
 integerTest02.txt
 integerTest03.txt
