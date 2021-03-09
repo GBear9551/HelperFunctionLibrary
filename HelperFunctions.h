@@ -12,6 +12,8 @@
 // Header files
 #include <iostream>
 #include <fstream>
+#include <chrono>
+#include <random>
 using namespace std;
 
 // Global Constants
@@ -32,6 +34,9 @@ const char MAX_NUM_FILES = 100;
   // Useful for file stream debugging.
 void debugCharacter(char character);
 
+
+
+// Test File functions
 /*
 name: run tests on a group of files
 input: a filename listing the  files to be tested.
@@ -49,11 +54,25 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE]);
 
 void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& numOfFiles);
 
+void sendArrToFile(ofstream& fout, const char fileName[], const int arr[], const int& currSize);
+
 void generateARandomTestFile(ofstream& fout, char fileName[]);
 
 void generateAGroupOfTestFiles(ofstream& fout, char fileName[]);
 
+
+// Sorting functions
+
+// Useful Algorithms
+namespace helper
+{
+    int gcd(int a, int  b);
+}
+
+// Array functions
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize);
+
+void randomInitialArr(int* arr,const unsigned& seed, const int& currSize);
 
 void initializeArr(float arr[MAX_FLOAT_ARR_SIZE], const int& currSize);
 
@@ -95,6 +114,10 @@ int countWords(ifstream& fin,char fileName[]);
 int countEndLines(ifstream& fin,char fileName[] );
 
 int countNumOfCharacter(ifstream& fin, char fileName[],const char& characterToBeCounted);
+
+int countNumOfCharacters(ifstream& fin, const char fileName[]);
+
+int countNumOfEnglishCharacters(ifstream& fin, const char fileName[]);
 
 /*
 name:

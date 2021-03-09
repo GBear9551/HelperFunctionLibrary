@@ -16,6 +16,18 @@ void debugCharacter(char character)
     pauseScreen();
 }
 
+// Sorting functions
+
+// Useful Algorithms
+int gcd(int a, int  b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+
+
 
 
 void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize)
@@ -30,6 +42,26 @@ void initializeArr(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize)
         arr[index] = 0;
     }
 }
+
+
+void randomInitialArr(int* arr,const unsigned& seed, const int& currSize)
+{
+    // Declare and Initialize variables
+      int index = 0;
+      unsigned seedFunction = std::chrono::system_clock::now().time_since_epoch().count();
+
+    // seed random engine
+      std::minstd_rand0 generator(seedFunction);
+
+
+    // loop through the array and fill it with random values
+      for (index = 0; index < currSize; index++)
+      {
+          arr[index] =(int)generator();
+      }
+
+}
+
 
 void initializeArr(float arr[MAX_FLOAT_ARR_SIZE], const int& currSize)
 {
@@ -93,7 +125,7 @@ void printArray(int arr[MAX_INTEGER_ARR_SIZE], const int& currSize)
     for (index = 0; index < currSize; index++)
     {
         // print each element 
-        cout << arr[index];
+        cout << '\n' << "Element " << index << "= " << arr[index];
 
     }
 }
@@ -309,6 +341,9 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
     int testResult = 0;
     int numberOfTestFiles = 0;
 
+
+   // TODO: TEST RESULT FILE 
+
    // get files and store them into a 2-D character array
     storeTestFiles(fin, fileNames, numberOfTestFiles);
 
@@ -322,8 +357,18 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
           
        // print test result
         cout << '\n';
-        cout << "Function: Number Of Postive Integers operated on file: " << fileNames[index] << " the following result was provided: " << testResult;
-         
+        cout << "Function: Number Of Postive Integers operated on file: " << fileNames[index] << " the following result: " << testResult;
+     
+       // How many english characters are in each file?
+        testResult = countNumOfEnglishCharacters(fin, fileNames[index]);
+
+        cout << '\n';
+        cout << "Function: Number of English Characters operated on file: " << fileNames[index] << " the following result: " << testResult;
+
+
+
+       // 
+
 
     }
 
@@ -353,6 +398,63 @@ void pauseScreen()
     cin >> userInput;
 
 }
+
+int countNumOfEnglishCharacters(ifstream& fin, const char fileName[])
+{
+
+    // Declare and Initialize variables
+      int numOfCharactersInFile = 0;
+      char characterFromFile = 'j';
+    // open file
+      fin.open(fileName);
+
+    // loop through the file
+      while (fin.good())
+      {
+          // get a character from the file
+          fin.get();
+
+          // is the character a valid character?
+          if (isdigit(characterFromFile) == 0)
+          {
+              // count the character
+                ++numOfCharactersInFile;
+          }
+
+          // return the number of characters in the file
+
+      }
+
+      return numOfCharactersInFile;
+
+}
+
+int countNumOfCharacters(ifstream& fin, const char fileName[])
+{
+    // Declare and Initialize variables
+      int numOfCharacters = 0;
+
+    // open file
+      fin.open(fileName);
+
+    // loop through the file
+      while (fin.good())
+      {
+
+          // get a character from the file
+          fin.get();
+
+          // is the character a valid character?
+
+          // count the character
+          ++numOfCharacters;
+      }
+    
+      // return the number of characters in the file
+        return numOfCharacters;
+}
+
+
 
 int countWords(ifstream& fin,char fileName[])
 {

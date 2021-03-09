@@ -40,6 +40,7 @@ int main()
     int userInput = 0;
     int stringLength = 0;
     int secondStrLen = 0;
+
     int resultSize = MAX_CSTRING_SIZE;
     int numOfWordsInFile = 0;
     int numOfCharactersInFile = 0;
@@ -62,12 +63,29 @@ int main()
     char resultString[MAX_CSTRING_SIZE];
     char fileNames[MAX_NUM_FILES][MAX_CHAR_ARR_SIZE];
 
+    int* array = new int[5];
+    int* size = new int;
+    *size = 5;
+    int* seed = new int;
+    *seed = 0;
 
     ifstream fin; 
 
     // Input several files
    
     //char concateTestResultString[MAX_CSTRING_SIZE];
+
+
+    // Randomly intialize an arr of size = 5
+     randomInitialArr( array,*seed,  *size);
+
+
+    // print that array
+     printArray(array, *size);
+
+    // send array to file
+
+
 
     // Main loop
       while(mainLoopValid)
