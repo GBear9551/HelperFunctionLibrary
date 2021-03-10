@@ -139,7 +139,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveInte
 
 int numOfNegativeIntegersInFile(ifstream& fin, const char fileName[]);
 
-int numOfIntegersInFile(ifstream& fin, char fileName[]);
+int numOfIntegersInFile(ifstream& fin, const char fileName[]);
 
 int numOfDigitsInFile(ifstream& fin, char fileName[]);
 

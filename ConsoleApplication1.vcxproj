@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="empty.txt" />
+    <Text Include="endlineTest.txt" />
     <Text Include="integerTest00.txt" />
     <Text Include="integerTest01.txt" />
     <Text Include="integerTest02.txt" />

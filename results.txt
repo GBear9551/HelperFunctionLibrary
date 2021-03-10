@@ -1,0 +1,73 @@
+
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: emptyFile.txt result: 0
+
+
+Function: Number of English Characters within file: emptyFile.txt result: 0
+
+
+Function: Number of Negative Integers within file: emptyFile.txt result: 0
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: endlineTest.txt result: 0
+
+
+Function: Number of English Characters within file: endlineTest.txt result: 0
+
+
+Function: Number of Negative Integers within file: endlineTest.txt result: 0
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: integerTest00.txt result: 2
+
+
+Function: Number of English Characters within file: integerTest00.txt result: 0
+
+
+Function: Number of Negative Integers within file: integerTest00.txt result: 1
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: integerTest01.txt result: 7
+
+
+Function: Number of English Characters within file: integerTest01.txt result: 0
+
+
+Function: Number of Negative Integers within file: integerTest01.txt result: 2
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: integerTest02.txt result: 9
+
+
+Function: Number of English Characters within file: integerTest02.txt result: 6
+
+
+Function: Number of Negative Integers within file: integerTest02.txt result: 3
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: integerTest03.txt result: 1
+
+
+Function: Number of English Characters within file: integerTest03.txt result: 6
+
+
+Function: Number of Negative Integers within file: integerTest03.txt result: 3
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: integerTest04.txt result: 5
+
+
+Function: Number of English Characters within file: integerTest04.txt result: 0
+
+
+Function: Number of Negative Integers within file: integerTest04.txt result: 4
+-------------------------------------------------------------------
+
+Function: Number Of Postive Integers in file: mixtureOfNumbers.txt result: 11
+
+
+Function: Number of English Characters within file: mixtureOfNumbers.txt result: 0
+
+
+Function: Number of Negative Integers within file: mixtureOfNumbers.txt result: 1

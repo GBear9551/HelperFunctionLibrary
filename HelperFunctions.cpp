@@ -400,7 +400,8 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
        // print test result
         cout << '\n' << '\n';
         cout << "Function: Number Of Postive Integers in file: " << fileNames[index] << " result: " << testResult;
-    
+       
+        fout << '\n';
         fout << "-------------------------------------------------------------------";
         fout << '\n' << '\n';
         fout << "Function: Number Of Postive Integers in file: " << fileNames[index] << " result: " << testResult;
@@ -411,8 +412,20 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
         cout << '\n' << '\n';
         cout << "Function: Number of English Characters within file: " << fileNames[index] << " result: " << testResult;
 
+        fout << '\n';
         fout << '\n' << '\n';
         fout << "Function: Number of English Characters within file: " << fileNames[index] << " result: " << testResult;
+
+
+       // How many english characters are in each file?
+        testResult = numOfNegativeIntegersInFile(fin, fileNames[index]);
+
+        cout << '\n' << '\n';
+        cout << "Function: Number of Negative Integers within file: " << fileNames[index] << " result: " << testResult;
+
+        fout << '\n';
+        fout << '\n' << '\n';
+        fout << "Function: Number of Negative Integers within file: " << fileNames[index] << " result: " << testResult;
 
     }
 
@@ -937,11 +950,14 @@ int numOfNegativeIntegersInFile(ifstream& fin,const char fileName[])
             {
                // negative character detected
 
-                if (negative == true)
+                if ((negative == true) && (previousDigit == true))
                 {
                     // reset negative flag
-                      negative = false;
+                    negative = false;
+                    numOfNegativeIntegers++;
                 }
+                else if (negative == true)
+                    negative = false;
                 else
                 {
                     // negative was false, so set the flag and prepare to count digits
@@ -988,10 +1004,48 @@ int numOfNegativeIntegersInFile(ifstream& fin,const char fileName[])
     return numOfNegativeIntegers;
 }
 
-int numOfIntegersInFile(ifstream& fin, char fileName[])
+int numOfIntegersInFile(ifstream& fin, const char fileName[])
 {
 
-    return 0;
+   // Declare and Initialize variables
+    int numOfIntegers = 0;
+    char charFromFile = 'a';
+    bool previousDigit = false;
+    bool isDigit = false;
+
+   // prime loop
+
+   // open file
+    fin.open(fileName);
+
+   // loop through file
+    while (fin.good())
+    {
+        // get a character from file
+        fin.get(charFromFile);
+
+        // store answer: is char a digit?
+          isDigit = ((isdigit(charFromFile) == 0) ? 0 : 1);
+
+          cout << '\n'<< "Is the character from the file a digit: ";
+
+        // is character not a digit, if yes, then terminate the integer when previous digit is true.
+
+        // is character a digit, then continue to count integers
+
+       // end loop when filestream goes bad fin.get
+
+    }
+    // close stream
+      fin.close();
+
+    // check to see if the final character was a digit
+      if ((isDigit == true) && (previousDigit == true))
+          numOfIntegers++;
+
+    // return the integer counter
+      return numOfIntegers;
+
 }
 
 int numOfDigitsInFile(ifstream& fin, char fileName[])

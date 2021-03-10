@@ -59,6 +59,9 @@
     <Text Include="integerTest00.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="endlineTest.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myStrHelper.h">
