@@ -85,7 +85,9 @@ int main()
 
     // send array to file
 
+     printDataLimits();
 
+     pauseScreen();
 
     // Main loop
       while(mainLoopValid)
@@ -179,6 +181,14 @@ int main()
             break;
 
         case 8:
+            // function: count number of negative integers in a file
+              cout << '\n' << "Please enter a file name: ";
+              cin >> fileName;
+              cout <<'\n' << "File name entered: " << fileName;
+              resultNum = numOfNegativeIntegersInFile(fin, fileName);
+              cout << '\n' << " The number of Negative Integers detected in file, " << fileName << " was: " <<  resultNum; 
+              pauseScreen();
+
             // function: count number of negative integers in a file
             break;
 

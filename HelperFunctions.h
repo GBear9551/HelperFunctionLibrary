@@ -9,7 +9,11 @@
 
 */
 
+#ifndef HELPER_FUNCTIONS_
+#define HELPER_FUNCTIONS_
+
 // Header files
+#include <limits.h>
 #include <iostream>
 #include <fstream>
 #include <chrono>
@@ -34,7 +38,8 @@ const char MAX_NUM_FILES = 100;
   // Useful for file stream debugging.
 void debugCharacter(char character);
 
-
+// Debug check the sizes of each data type
+void printDataLimits();
 
 // Test File functions
 /*
@@ -126,13 +131,13 @@ output:
 process:
 dependancies:
 */
-int numOfPositiveIntegersInFile(ifstream& fin, char fileName[]);
+int numOfPositiveIntegersInFile(ifstream& fin, const char fileName[]);
 
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[], const int& arrSize);
 
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[][MAX_NUM_COLS]);
 
-int numOfNegativeIntegersInFile(ifstream& fin, char fileName[]);
+int numOfNegativeIntegersInFile(ifstream& fin, const char fileName[]);
 
 int numOfIntegersInFile(ifstream& fin, char fileName[]);
 
@@ -140,6 +145,6 @@ int numOfDigitsInFile(ifstream& fin, char fileName[]);
 
 int countNumOfVectorsInFile(ifstream& fin, char fileName[]);
 
-
+#endif
 
 #pragma once 

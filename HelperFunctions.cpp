@@ -16,6 +16,31 @@ void debugCharacter(char character)
     pauseScreen();
 }
 
+void printDataLimits()
+{
+
+
+    cout << '\n' << "The number of bits in a byte " <<  CHAR_BIT;
+
+    cout << '\n' << "The minimum value of SIGNED CHAR = " << SCHAR_MIN;
+    cout << '\n' << "The maximum value of SIGNED CHAR = " << SCHAR_MAX;
+    cout << '\n' << "The maximum value of UNSIGNED CHAR = " << UCHAR_MAX;
+
+    cout << '\n' << "The minimum value of SHORT INT = " << SHRT_MIN;
+    cout << '\n' << "The maximum value of SHORT INT = " << SHRT_MAX;
+
+    cout << '\n' << "The minimum value of INT = " << INT_MIN;
+    cout << '\n' << "The maximum value of INT = " << INT_MAX;
+
+    cout << '\n' << "The minimum value of CHAR = " << CHAR_MIN;
+    cout << '\n' << "The maximum value of CHAR = " <<  CHAR_MAX;
+
+    cout << '\n' << "The minimum value of LONG = " << LONG_MIN;
+    cout << '\n' << "The maximum value of LONG = " <<  LONG_MAX;
+}
+
+
+
 // Sorting functions
 
 // Useful Algorithms
@@ -322,7 +347,8 @@ void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& num
       {
           // file insert each name into the 2-D character array
           fin.getline( fileName, MAX_CHAR_ARR_SIZE);
-
+         
+          
           cout << '\n' << "File name: " << fileName;
           len = strLen(fileName);
           strCopy(fileName, fileNames[index], len, MAX_CHAR_ARR_SIZE);
@@ -330,8 +356,8 @@ void storeTestFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE], int& num
           index++;
       }
 
-      // return the number of files by reference
-        numOfFiles = index ;
+      // return the number of files by reference, minus one, due to EOF bug.
+        numOfFiles = index-1 ;
 
         cout << '\n' << "Number of Files received from " << orgFileName << ": " << numOfFiles;
 
@@ -349,12 +375,19 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
     int rowIndex = 0;
     int testResult = 0;
     int numberOfTestFiles = 0;
-
-
-   // TODO: TEST RESULT FILE 
+    char fileToStoreResults[255];
+    ofstream fout; 
 
    // get files and store them into a 2-D character array
+    // function returns a 2D char array called fileNames, this array contains each test file name.
     storeTestFiles(fin, fileNames, numberOfTestFiles);
+
+   // Ask user for the ouput file name, i.e. the results destination.
+      cout << '\n' << '\n' << " Please enter the destination for the results: ";
+      cin >> fileToStoreResults;
+ 
+   // Open file for output
+      fout.open(fileToStoreResults);
 
    // iterate through each test file and run the functions on the files
     for (index = 0; index < numberOfTestFiles; index++)
@@ -365,23 +398,25 @@ void runTestsOnFiles(ifstream& fin, char fileNames[][MAX_CHAR_ARR_SIZE])
         testResult = numOfPositiveIntegersInFile(fin, fileNames[index]);
           
        // print test result
-        cout << '\n';
-        cout << "Function: Number Of Postive Integers operated on file: " << fileNames[index] << " the following result: " << testResult;
-     
+        cout << '\n' << '\n';
+        cout << "Function: Number Of Postive Integers in file: " << fileNames[index] << " result: " << testResult;
+    
+        fout << "-------------------------------------------------------------------";
+        fout << '\n' << '\n';
+        fout << "Function: Number Of Postive Integers in file: " << fileNames[index] << " result: " << testResult;
+
        // How many english characters are in each file?
         testResult = countNumOfEnglishCharacters(fin, fileNames[index]);
 
-        cout << '\n';
-        cout << "Function: Number of English Characters operated on file: " << fileNames[index] << " the following result: " << testResult;
+        cout << '\n' << '\n';
+        cout << "Function: Number of English Characters within file: " << fileNames[index] << " result: " << testResult;
 
-
-
-       // 
-
+        fout << '\n' << '\n';
+        fout << "Function: Number of English Characters within file: " << fileNames[index] << " result: " << testResult;
 
     }
 
-    fin.close();
+    fout.close();
 
 
 }
@@ -425,10 +460,8 @@ int countNumOfEnglishCharacters(ifstream& fin, const char fileName[])
           // get a character from the file
           fin.get(characterFromFile);
 
-          cout << '\n' << "Character from file: " << characterFromFile;
-
           // is the character a valid character?
-          if (isdigit(characterFromFile) == 0)
+          if (isalpha(characterFromFile) != 0)
           {
               // count the character
                 ++numOfCharactersInFile;
@@ -437,6 +470,9 @@ int countNumOfEnglishCharacters(ifstream& fin, const char fileName[])
           // return the number of characters in the file
 
       }
+
+      // 
+
 
       fin.close();
 
@@ -630,7 +666,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
 }
 */
 
-int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
+int numOfPositiveIntegersInFile(ifstream& fin, const char fileName[])
 {
  /* Assumption file format
     
@@ -656,6 +692,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
       int positiveIntegerCounter = 0;
       int isDigit = 0;
       char charFromFile = 'h';
+      char debug = 'a';
       bool previousDigit = false;
       // not necessary since positive = is the same as not negative, bool positive = false;
       bool negative = false;
@@ -672,6 +709,8 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
       // isDigit = 0 
 
       // TODO: summation = 0, integer array position = 0, exponent = 1, multipler = 10, currentdigit = 0
+// file stream buffer i
+
 
     // loop through file finding all the positiveIntegers
       while (fin.good())
@@ -754,7 +793,10 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
              // case 4. the character is a digit and there was a digit before this one, we continue getting digits
                // for each continued digit we increase our exponent one, we multiply this to the current sum
                  // then we add the new digit to the current sum. ONLY IF THE POSITIVE FLAG IS SET
-
+            else if ((isDigit != 0) && (previousDigit == true))
+            {
+               // ..
+            }
 
              // if yes then we are keeping track of a positive integer, unless there was a negative infront.
                // a negative flag does to false only we are done eating the current negative integer.
@@ -772,6 +814,7 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[])
 
     return positiveIntegerCounter;
 }
+
 int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveIntegers[], const int& arrSize)
 {
 
@@ -841,10 +884,108 @@ int numOfPositiveIntegersInFile(ifstream& fin, char fileName[], int positiveInte
 
 
 
-int numOfNegativeIntegersInFile(ifstream& fin, char fileName[])
+int numOfNegativeIntegersInFile(ifstream& fin,const char fileName[])
 {
+    
+    // Declare and Initialize variables
+      int numOfNegativeIntegers = 0;
+      char charFromFile = 'j';
+      int isDigit = 0;
+      bool negative = false;
+      bool previousDigit = false;
 
-    return 0;
+
+      /*
+      
+      Prime Loop
+      
+      negative = false
+
+      previousDigit = false
+      
+      */
+
+     /*
+    
+      Test file structure
+
+      1 -1 -2
+
+      abx-11b98
+
+      9a8s5-43sd-1234501
+     
+     */
+
+
+
+    // open file
+      fin.open(fileName);
+
+    // loop through file
+      while (fin.good())
+      {
+          // get character
+            fin.get(charFromFile);
+
+          // is the character a digit?
+            // store the result
+            isDigit = isdigit(charFromFile);
+
+            // negative character 
+            if ((isDigit == 0) && (charFromFile == '-'))
+            {
+               // negative character detected
+
+                if (negative == true)
+                {
+                    // reset negative flag
+                      negative = false;
+                }
+                else
+                {
+                    // negative was false, so set the flag and prepare to count digits
+                      negative = true;
+                }
+
+
+
+            }
+
+          // if the character is not a digit but is negative set negative to true. terminating character
+            else if ((isDigit == 0) && (negative == true) &&  (previousDigit == true))
+            {
+
+                // finish the negative integer count
+                  numOfNegativeIntegers++;
+
+                // reset flags
+                  negative = false;
+                  previousDigit = true;
+            }
+
+          // else if character is not a digit and negative was set to true
+            // set negative to false and previous digit to false
+            else if ((isDigit != 0) && (negative == true))
+            {
+              // continue counting characters
+                previousDigit = true;
+            }
+
+         // else if character is a digit and negative is set to true and previous digit is true
+
+         // else if 
+
+      }
+
+      fin.close();
+
+      // The stream terminates on a posioned fin.get(), therefore we test the remaining flags
+      if ((previousDigit == true) && (negative == true))
+          numOfNegativeIntegers++;
+
+
+    return numOfNegativeIntegers;
 }
 
 int numOfIntegersInFile(ifstream& fin, char fileName[])
